@@ -1,0 +1,1 @@
+{"version":3,"file":"token-verification.d.ts","sourceRoot":"","sources":["../../src/middleware/token-verification.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,YAAY,EAAE,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAC;AAK/D,eAAO,MAAM,aAAa,GAAI,KAAK,OAAO,EAAE,KAAK,QAAQ,EAAE,MAAM,YAAY,8CAmB5E,CAAA"}

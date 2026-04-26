@@ -1,11 +1,11 @@
 import mongoose, { Document, model,Schema } from 'mongoose';
 
-export const cType = ["image","audio","article","video"];
+export const cType = ["audio","youtube","twitter","document","instagram","facebook","linkedin"];
 
 export interface ContentType extends Document{
     title: string,
     link: string,
-    type: "image" | "audio" | "article" | "video",
+    type: "audio"|"youtube"|"twitter"|"document"|"instagram"|"facebook"|"linkedin",
     tag: mongoose.Types.ObjectId[],
     userId: mongoose.Types.ObjectId
 }

@@ -1,5 +1,5 @@
 import mongoose, { Document, model, Schema } from 'mongoose';
-export const cType = ["image", "audio", "article", "video"];
+export const cType = ["audio", "youtube", "twitter", "document", "instagram", "facebook", "linkedin"];
 const contentSchema = new Schema({
     title: {
         type: String,

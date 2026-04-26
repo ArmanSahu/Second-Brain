@@ -3,7 +3,7 @@ export declare const cType: string[];
 export interface ContentType extends Document {
     title: string;
     link: string;
-    type: "image" | "audio" | "article" | "video";
+    type: "audio" | "youtube" | "twitter" | "document" | "instagram" | "facebook" | "linkedin";
     tag: mongoose.Types.ObjectId[];
     userId: mongoose.Types.ObjectId;
 }

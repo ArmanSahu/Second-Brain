@@ -6,6 +6,9 @@ import { useForm, type FieldError } from "react-hook-form"
 import { Backend_URL } from "../config/Backend_URL"
 import { URLPath } from "../config/URLPath"
 import { useState } from "react"
+import { useAuthStore } from "../store/AuthStore"
+
+
 
 interface AuthType{
     type: "signup" | "login" ,
@@ -16,15 +19,15 @@ interface AuthType{
 type AuthResponseType = {
     message?: string,
 }
+ type FormData = {
+        username: string,
+        password: string
+}
 
 export const Auth = ({type,header,subheading}:AuthType) => {
     const [errorMessage,setErrorMessage] = useState("");
-
-    type FormData = {
-        username: string,
-        password: string
-    }
-
+    const fetchAuth = useAuthStore((s) => s.fetchAuth);
+   
     const navigate = useNavigate();
 
     const {register,
@@ -61,7 +64,8 @@ export const Auth = ({type,header,subheading}:AuthType) => {
                 if(type === "signup"){  
                     navigate("/login");
                 }else{
-                    navigate("/dashboard");
+                   await fetchAuth();
+                navigate("/dashboard");
                 }
             }else{
                if(result.message?.includes("username")){

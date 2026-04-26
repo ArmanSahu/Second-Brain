@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { BrainIcon } from "../Icons/BrainIcon"
 import { Button } from "./Button"
 
@@ -17,9 +17,9 @@ export const NavBar = () => {
                 <p>Second Brain</p>
             </div>
             <div className="flex items-center gap-10 ">
-                <Link text="Features" />
-                <Link text="How it works" />
-                <Link text="About" />
+                <NavbarLink to="/#" text="Features" />
+                <NavbarLink to="/dashboard"  text="Go to dashboard" />
+                <NavbarLink to="/#" text="About" />
             </div>
             <div className="flex items-center gap-3">
                 <Button variant="secondary" text="Log in" size="lg" onClick={() => navigate("/login")} />
@@ -29,8 +29,8 @@ export const NavBar = () => {
     </div>
 }
 
-export const Link = ({text}:{text: string}) => {
-    return <p className="hover:text-blue-600  cursor-pointer">
+export const NavbarLink = ({text,to}:{text: string,to: string}) => {
+    return <Link to={to} className="hover:text-blue-600  cursor-pointer ">
         {text}
-    </p>
+    </Link>
 }

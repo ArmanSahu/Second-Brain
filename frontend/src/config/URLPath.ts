@@ -8,6 +8,6 @@ type URLPathType = {
 export const  URLPath:URLPathType = {
     signup: "/api/v1/auth/signup",
     login: "/api/v1/auth/login",
-    content: "/api/v1/content/",
-    me: "/api/v1/me/"
+    content: "/api/v1/content",
+    me: `/api/v1/me`
 }

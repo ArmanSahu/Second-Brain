@@ -8,18 +8,22 @@ import { Dashboard } from "./Pages/Dashboard"
 import { Protected } from "./components/ProtectedRoute"
 import { useAuthStore } from "./store/AuthStore"
 import { useEffect } from "react"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
 
 function App() {
 
-  const fetchAuth = useAuthStore((s) => s.fetchAuth);
+  const queryClient = new QueryClient();
 
+  const fetchAuth = useAuthStore((s) => s.fetchAuth);
   useEffect(()=> {
     fetchAuth();
+
   },[]);
 
   return (
     <>
+    <QueryClientProvider client={queryClient} > 
     <BrowserRouter>
 
        <Routes>
@@ -35,6 +39,7 @@ function App() {
        </Routes>
    
     </BrowserRouter>
+    </QueryClientProvider>
 
   </>
   )

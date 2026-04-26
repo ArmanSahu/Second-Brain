@@ -9,6 +9,12 @@ export const createContent = async (req, res) => {
     const userId = req.user.userId;
     const { title, link, type, tag } = req.body;
     try {
+        const url = new URL(link);
+        if (!url) {
+            return res.status(400).json({
+                message: "Invalid url"
+            });
+        }
         const newContent = await Content.create({
             title,
             tag,
@@ -92,7 +98,6 @@ export const updateContent = async (req, res) => {
         }, {
             new: true
         });
-        console.log(updatedContent);
         if (!updatedContent) {
             return res.status(404).json({ message: "Content not found" });
         }

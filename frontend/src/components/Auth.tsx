@@ -93,12 +93,12 @@ export const Auth = ({type,header,subheading}:AuthType) => {
                 <p className="text-gray-500 text-md">Your thoughts,organized.</p>
             </div>
             
-            <div className="bg-white mt-7 px-8 py-6 flex flex-col gap-4 rounded-2xl w-sm shadow-lg shadow-gray-600 border-gray-500 border justify-center ">
+            <div className="bg-white mt-7 px-8 py-6 flex flex-col gap-4 rounded-2xl lg:w-sm w-xs shadow-lg shadow-gray-600 border-gray-500 border justify-center ">
                 <div className=" flex flex-col items-center">
                     <p className="font-semibold  text-xl">{header}</p>
                     <p className="text-gray-500 text-sm">{subheading}</p>
                 </div>
-                <form onSubmit={handleSubmit(onSubmit)} >
+                <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2" >
                     <InputComponent heading="Username" placeholder="Enter your username" type="text"  {...register("username",{
                         required:{
                             value: true,

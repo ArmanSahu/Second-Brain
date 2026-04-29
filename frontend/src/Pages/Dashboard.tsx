@@ -10,18 +10,9 @@ import { useContent } from "../hooks/useContent"
 import { Card } from "../components/Card"
 import { CardSkeleton } from "../components/CardSkeleton"
 import ErrorBoundary from "../components/ErrorBoundry";
+import { Box } from "../components/DashboardContentBox"
 
 
-interface Box{
-    text: string;
-    onClick: () => void
-}
-
-export function Box({text,onClick}: Box) {
-    return <div onClick={onClick} className="px-4 py-1 rounded-3xl border active:translate-y-0.5 transition-transform duration-400 ease-in-out  text-sm hover:bg-blue-600 hover:text-white cursor-pointer bg-white">
-        {text}
-    </div>
-}
 
 export const Pages = {
   all : "all",
@@ -32,23 +23,26 @@ export const Pages = {
 export function Dashboard() {
 
   const [modalOpen,setModalOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState("all");
+  const [currentPage, setCurrentPage] = useState(Pages.all);
+
   const username = useAuthStore((s) => s.username);
-
   const {data,isLoading,error} = useContent();
-
-
   const filteredContent = currentPage === Pages.all ? data?.contents : data?.contents.filter((c) => c.type === currentPage); 
 
   return (
     <div className="min-h-screen bg-gray-100">
 
+      {/* Sidebar */}
       <div>
         <SideBar setCurrPage={setCurrentPage} />
       </div>
+
+
+      {/* ContentModal open close */}
       <ContentModal open={modalOpen} onClose={() => setModalOpen(false)}/>
     
-      <div className="max-w-7xl mx-auto pt-4 flex flex-col ">    
+      <div className="max-w-7xl mx-auto pt-4 flex flex-col ">  
+
         <div className="flex justify-between items-center gap-4">
             <div className="pl-62">
                 <div className="flex items-center gap-2">
@@ -57,6 +51,7 @@ export function Dashboard() {
                 </div>
                 <p className="text-sm">Here's what's in your brain today</p>
             </div>
+
             <div className="flex gap-5">
                 <Button text="Add Content" variant="primary" size="md" startIcon={<AddIcon size="md" />} onClick={() => setModalOpen(true)} />
                 <Button text="Share Brain" variant="secondary" size="md" startIcon={<ShareIcon size="md" />} />
@@ -74,15 +69,14 @@ export function Dashboard() {
       </div>
 
       <div className="  ml-70 px-20 pt-4 pb-10">
-        {isLoading && <div className="loader flex justify-center items-center">
-          
-        </div>}
+        {isLoading && <div className="loader flex justify-center items-center"></div>}
+
         {error && <div className="text-red-500">
           Something went wrong while fetching contents
         </div>}
 
         <div className="flex gap-10 flex-wrap">
-            {isLoading && currentPage === Pages.all
+            {isLoading 
               ? Array.from({ length: 6 }).map((_, i) => (
                   <CardSkeleton key={i} />
                 ))

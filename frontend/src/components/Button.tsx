@@ -15,14 +15,14 @@ const variantType = {
     "secondary": "bg-blue-200 text-blue-600" 
 }
 
-const defaultType = "rounded-md cursor-pointer flex items-center transition-transform hover:-translate-y-0.5 duration-300 active:translate-y-0.5 "
-const loadingType = "rounded-md  flex items-center"
+const defaultType = " cursor-pointer flex items-center transition-transform hover:-translate-y-0.5 duration-300 active:translate-y-0.5 "
+const loadingType = "flex items-center"
 
 const sizeType = {
-    "sm": "px-4 py-1 gap-1 ",
-    "md": "px-5 py-2 gap-2",
-    "lg": "px-7 py-1.5 gap-3 ",
-    "custom": "w-full flex justify-center items-center py-1.5"
+    "sm": "px-4 py-1 gap-1 md:rounded-md rounded-xl",
+    "md": "px-5 py-1.5 gap-2 rounded-md",
+    "lg": "lg:px-7 lg:py-1.5 px-6 py-1 gap-3 rounded-md ",
+    "custom": "w-full flex justify-center items-center py-1.5 rounded-md"
 }
 
 export const Button = ({variant,text,startIcon,endIcon,size,onClick,loading}: ButtonType) => {

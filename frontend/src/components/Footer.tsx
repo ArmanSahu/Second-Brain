@@ -7,12 +7,12 @@ import { CloudIcon } from "../Icons/CloudIcon"
 
 
 export const Footer = () => {
-    return <div className="border-t border-gray-200 shadow-sm py-10">
-        <div className="max-w-7xl mx-auto flex flex-col gap-10">
+    return <div className="border-t border-gray-200 shadow-sm py-5 h-full">
+        <div className="max-w-7xl mx-auto flex flex-col gap-10 pb-15    ">
             <div className="flex justify-center items-center">
                 Trusted by students, creators and professionals
             </div>
-            <div className="flex  justify-center gap-10">
+            <div className="flex md:flex-row flex-col items-center md:items-start justify-center md:gap-10 gap-5 md:px-5">
                 <FooterDisplay primaryText="Private & Secure" secText="Your data is encrypted and always protected " icon={<ShieldIcon size="lg" />} />
                 <FooterDisplay primaryText="Fast & Organized" secText="Safe and find anything in seconds" icon={<BoltIcon size="lg" />} />
                 <FooterDisplay primaryText="Access anywhere" secText="Your brain is synced across all devices" icon={<CloudIcon size="lg" />} />

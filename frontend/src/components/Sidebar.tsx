@@ -19,11 +19,11 @@ export const SideBar = ({setCurrPage}: SideBarProps) => {
             <p>Second Brain</p>
         </div>
         <div className=" flex flex-col gap-1 pt-8 ">
-            <SideBarItem onClick={() => setCurrPage(Pages.all)} text="Home" icon={<HomeIcon size="md" />} />
-            <SideBarItem onClick={() => setCurrPage(Pages.all)} text="Tweets" icon={<TweetIcon size="md" />} />
-            <SideBarItem onClick={() => setCurrPage(Pages.youtube)} text="Videos" icon={<VideoIcon size="md" />} />
-            <SideBarItem onClick={() => setCurrPage(Pages.all)} text="Documents" icon={<DocumentIcon size="md" />} />
-            <SideBarItem onClick={() => setCurrPage(Pages.instagram)} text="Instagram" icon={<InstagramIcon size="md" />} />
+            <SideBarItem bgColor={true} onClick={() => setCurrPage(Pages.all)} text="Home" icon={<HomeIcon size="md" />} />
+            <SideBarItem bgColor={true} onClick={() => setCurrPage(Pages.all)} text="Tweets" icon={<TweetIcon size="md" />} />
+            <SideBarItem bgColor={true} onClick={() => setCurrPage(Pages.youtube)} text="Videos" icon={<VideoIcon size="md" />} />
+            <SideBarItem bgColor={true} onClick={() => setCurrPage(Pages.all)} text="Documents" icon={<DocumentIcon size="md" />} />
+            <SideBarItem bgColor={true} onClick={() => setCurrPage(Pages.instagram)} text="Instagram" icon={<InstagramIcon size="md" />} />
         </div>
     </div>
 }

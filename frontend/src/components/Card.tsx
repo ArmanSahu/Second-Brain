@@ -32,9 +32,8 @@ const iconType = {
 
 
 export const Card = ({title,type,link,id}: cardProps) => {
-    // const videoId = getVideoId(link);
    
-    const {mutate} = useDeleteContent();
+    const {mutate,error} = useDeleteContent();
     const queryClient = useQueryClient();
 
     function deleteContent(id:string){
@@ -78,7 +77,7 @@ export const Card = ({title,type,link,id}: cardProps) => {
                 />
             )}
         </div>
-       
+        {error && <div className="text-red-500 text-sm">cannot delete video</div>}
     </div>
 }
 

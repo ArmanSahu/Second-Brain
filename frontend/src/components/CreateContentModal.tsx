@@ -22,9 +22,11 @@ type FormData = {
 
 export const ContentModal = ({open,onClose}: ContentModalType) => {
     const [showError, setShowError] = useState(false);
-    const queryClient = useQueryClient();
+
     
+    const queryClient = useQueryClient();
     const {mutate,error,isPending} = useCreateContent();
+
     const {register,
         handleSubmit,
         formState: {errors},

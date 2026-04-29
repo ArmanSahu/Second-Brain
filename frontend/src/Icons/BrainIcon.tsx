@@ -5,7 +5,7 @@ export const BrainIcon = () => {
   return (
     <svg
       viewBox="20 10 160 180"   // 👈 more space on top
-      className="size-8 stroke-indigo-600 fill-none"
+      className="lg:size-8 size-6 stroke-indigo-600 fill-none"
       strokeWidth="10"          // 👈 balanced thickness
       strokeLinecap="round"
       strokeLinejoin="round"

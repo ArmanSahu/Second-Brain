@@ -56,22 +56,22 @@ export const SideBar = ({setCurrPage,sidebarOpen,setSidebarOpen}: SideBarProps) 
                     <SideBarItem bgColor={true} onClick={() => setCurrPage(Pages.all)} text="Home" icon={<HomeIcon size="md" />} />
                 </div>
                 <div className={`duration-350 ${sidebarOpen?"translate-x-0":"-translate-x-full"} transition-transform  `}>
-                    <SideBarItem bgColor={true} onClick={() => setCurrPage(Pages.all)} text="Tweets" icon={<TweetIcon size="md" />} />
+                    <SideBarItem bgColor={true} onClick={() => setCurrPage(Pages.twitter)} text="Tweets" icon={<TweetIcon size="md" />} />
                 </div>
                 <div className={`duration-400  ${sidebarOpen?"translate-x-0":"-translate-x-full"} transition-transform `}>
                     <SideBarItem bgColor={true} onClick={() => setCurrPage(Pages.youtube)} text="Youtube" icon={<VideoIcon size="md" />} />
                 </div>
                 <div className={`duration-450 ${sidebarOpen?"translate-x-0":"-translate-x-full"} transition-transform `}>
-                    <SideBarItem bgColor={true} onClick={() => setCurrPage(Pages.all)} text="Documents" icon={<DocumentIcon size="md" />} />
+                    <SideBarItem bgColor={true} onClick={() => setCurrPage(Pages.documents)} text="Documents" icon={<DocumentIcon size="md" />} />
                 </div>
                 <div className={`duration-500 ${sidebarOpen?"translate-x-0":"-translate-x-full"} transition-transform  `}>
                     <SideBarItem bgColor={true} onClick={() => setCurrPage(Pages.instagram)} text="Instagram" icon={<InstagramIcon size="md" />} />
                 </div>
                 <div className={`duration-550 ${sidebarOpen?"translate-x-0":"-translate-x-full"} transition-transform  `}>
-                    <SideBarItem bgColor={true} onClick={() => setCurrPage(Pages.instagram)} text="Facebook" icon={<FacebookIcon size="md" />} />
+                    <SideBarItem bgColor={true} onClick={() => setCurrPage(Pages.facebook)} text="Facebook" icon={<FacebookIcon size="md" />} />
                 </div>
                  <div className={`duration-600 ${sidebarOpen?"translate-x-0":"-translate-x-full"} transition-transform  `}>
-                    <SideBarItem bgColor={true} onClick={() => setCurrPage(Pages.instagram)} text="LinkedIn" icon={<LinkedinIcon size="md" />} />
+                    <SideBarItem bgColor={true} onClick={() => setCurrPage(Pages.linkedin)} text="LinkedIn" icon={<LinkedinIcon size="md" />} />
                 </div>
             </div>
             <div onClick={()=>logout()} className={` fixed bottom-2 w-full duration-800 ${sidebarOpen?"translate-x-0":"-translate-x-full"} transition-transform font-semibold `}>

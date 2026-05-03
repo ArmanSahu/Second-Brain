@@ -33,7 +33,7 @@ export const NavBar = () => {
         
             <div className="lg:text-2xl text-xl tracking-tight font-bold  flex items-center gap-1">
                 <div className="md:hidden hover:cursor-pointer flex items-center pr-2" onClick={() => setSideBarMainPage((p) => !p)}>
-                    <SidebarIcon size="lg" />
+                    <SidebarIcon  />
                 </div>
                 <div className=" flex gap-2 items-center md:hidden ">
                     <p>Second Brain</p>

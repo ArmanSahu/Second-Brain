@@ -13,7 +13,6 @@ import { getVideoId } from "../utils/YoutubeVideoId"
 import { useEffect } from "react"
 import { FacebookIcon } from "../Icons/FacebookIcon"
 import { LinkedinIcon } from "../Icons/LinkedinIcon"
-
 import { extractSpotifyData } from "../utils/extractSongId"
 import { FacebookEmbed } from "./FacebookEmmbed"
 
@@ -112,7 +111,7 @@ export const Card = ({title,type,link,id}: cardProps) => {
             {type === "linkedin" && linkedInId &&(
                 <iframe
                     src={`https://www.linkedin.com/embed/feed/update/urn:li:activity:${linkedInId}`}
-                    className="w-full h-[400px]"
+                    className="w-full h-100"
                 />
             )}
             {type === "audio" && songData && 

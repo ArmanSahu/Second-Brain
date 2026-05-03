@@ -1,4 +1,4 @@
-import { iconSize, type iconType } from "./IconType";
+
 
 
 export const BrainIcon = () => {

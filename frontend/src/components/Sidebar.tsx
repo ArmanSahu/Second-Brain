@@ -12,7 +12,6 @@ import { LinkedinIcon } from "../Icons/LinkedinIcon"
 import { Logout } from "../Icons/Logout"
 import { Backend_URL } from "../config/Backend_URL"
 import { URLPath } from "../config/URLPath"
-import { useNavigate } from "react-router-dom"
 import { useAuthStore } from "../store/AuthStore"
 
 

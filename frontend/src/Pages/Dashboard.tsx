@@ -48,7 +48,7 @@ export function Dashboard() {
 
       {/* ContentModal open close */}
       <div onClick={()=>setSidebarOpen((p) => !p)} className="fixed left-3 cursor-pointer top-6 z-50">
-        <SidebarIcon size="lg" />
+        <SidebarIcon  />
       </div>
       
       <ContentModal open={modalOpen} onClose={() => setModalOpen(false)}/>

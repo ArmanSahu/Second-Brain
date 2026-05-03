@@ -1,4 +1,4 @@
 
 
 
-export const Backend_URL: string = "http://localhost:3000";
+export const Backend_URL: string = "https://second-brain-1-inxh.onrender.com";

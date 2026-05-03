@@ -14,7 +14,7 @@ export const SideBarMainPage = ({open}: SideBarMainPage) => {
                 <SideBarItem  bgColor={false} text="Home" onClick={() => navigate("/")} />
             </div>
             <div className={`${open? "translate-x-0" : "-translate-x-full"} duration-400`}>
-                <SideBarItem  bgColor={false} text="About" onClick={() => navigate("#")}/>
+                <SideBarItem  bgColor={false} text="About" onClick={() => navigate("/about")}/>
             </div>
             <div className={`${open? "translate-x-0" : "-translate-x-full"} duration-500`}>
                 <SideBarItem bgColor={false} text="Dashboard" onClick={() => navigate("/dashboard")}  />

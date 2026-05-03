@@ -16,7 +16,7 @@ app.use(cors({
   allowedHeaders: ["Content-Type"],
   credentials: true
 }));
-app.options("*", cors({
+app.options("/.*/", cors({
   origin: "https://second-brain-na3d.vercel.app",
   credentials: true
 }));

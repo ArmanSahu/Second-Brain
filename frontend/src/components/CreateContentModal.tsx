@@ -21,7 +21,6 @@ type FormData = {
 
 
 export const ContentModal = ({open,onClose}: ContentModalType) => {
-    const [showError, setShowError] = useState(false);
 
     
     const queryClient = useQueryClient();
@@ -37,15 +36,16 @@ export const ContentModal = ({open,onClose}: ContentModalType) => {
       });
       
     const onSubmit = (data: FormData) => {
-        setShowError(true);
+       
         mutate(data,{
             onSuccess: () => {
+                
                 queryClient.invalidateQueries({
                     queryKey: ["content"]
                 });
                 onClose();
                 reset();
-                setShowError(false);
+                
             },
             
         });
@@ -63,7 +63,7 @@ export const ContentModal = ({open,onClose}: ContentModalType) => {
              document.body.style.overflow = "auto";
             document.body.style.touchAction = "auto";
         }
-    })
+    },[open])
     
     return <div>
         {open && <div onClick={onClose}  className="fixed w-screen h-screen top-0 left-0 bg-gray-200/70 flex justify-center items-center ">
@@ -76,10 +76,10 @@ export const ContentModal = ({open,onClose}: ContentModalType) => {
                 </div> 
                 <form onSubmit={handleSubmit(onSubmit)}> 
                     <div className="mt-4 flex flex-col gap-2">
-                        <InputComponent type="text" heading="Title" placeholder="Add Title" {...register("title")} error={errors.title}/>
-                        <InputComponent type="text" heading="Link" placeholder="Add Link" {...register("link")} error={errors.link}/>
-                        <Dropdown values={["audio","document","youtube","twitter","instagram","facebook","linkedin"]} {...register("type")} error={errors.type} />
-                        {showError && error && <p className="text-red-500">{error.message || "Failed to create content"}</p>}
+                        <InputComponent type="text" heading="Title" placeholder="Add Title" {...register("title",{ required: "Title is required" })} error={errors.title}/>
+                        <InputComponent type="text" heading="Link" placeholder="Add Link" {...register("link",{ required: "Link is required" })} error={errors.link}/>
+                        <Dropdown values={["audio","document","youtube","twitter","instagram","facebook","linkedin"]} {...register("type",{ required: "Type is required" })} error={errors.type} />
+                        {error && <p className="text-red-500">{error.message || "Failed to create content"}</p>}
                     </div>  
                     <div className="mt-6 flex justify-center">
                         <Button variant="primary" size="custom" text="Submit" loading={isPending} />

@@ -3,7 +3,9 @@ type URLPathType = {
     login: string,
     content: string,
     me: string,
-    logout: string
+    logout: string,
+    shareLink: string,
+    getSharedBrain: string
 }
 
 export const  URLPath:URLPathType = {
@@ -11,5 +13,7 @@ export const  URLPath:URLPathType = {
     login: "/api/v1/auth/login",
     content: "/api/v1/content",
     me: "/api/v1/me",
-    logout:"/api/v1/auth/logout"
+    logout:"/api/v1/auth/logout",
+    shareLink: "/api/v1/brain/share",
+    getSharedBrain: "/api/v1/brain/share/"
 }

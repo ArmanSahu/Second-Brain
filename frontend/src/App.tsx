@@ -7,6 +7,7 @@ import { useAuthStore } from "./store/AuthStore"
 import { useEffect } from "react"
 import { MainComponent } from "./Pages/MainPage"
 import { QueryProvider } from "./Providers/QueryProvider"
+import { Share } from "./Pages/Share"
 
 function App() {
   
@@ -29,6 +30,8 @@ function App() {
               <Dashboard />
             </Protected>
           }  />
+
+          <Route path="/brain/share/:shareId" element={<Share />} />
 
         </Routes>
       </BrowserRouter>

@@ -20,8 +20,12 @@ import { ShareModal } from "../components/ShareContentModal"
 
 export const Pages = {
   all : "all",
+  twitter: "twitter",
   youtube: "youtube",
-  instagram: "instagram"
+  documents: "document",
+  instagram: "instagram",
+  facebook: "facebook",
+  linkedin: "linkedin"
 } 
 
 export function Dashboard() {
@@ -29,7 +33,7 @@ export function Dashboard() {
   const [modalOpen,setModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(Pages.all);
   const [sidebarOpen,setSidebarOpen] = useState(false);
-  const [share, setShareModalOpen] = useState(false);
+  const [shareModalOpen, setShareModalOpen] = useState(false);
 
   const username = useAuthStore((s) => s.username);
   const {data,isLoading,error} = useContent();
@@ -48,38 +52,38 @@ export function Dashboard() {
       </div>
       
       <ContentModal open={modalOpen} onClose={() => setModalOpen(false)}/>
-      <ShareModal open={true} />
+      <ShareModal open={shareModalOpen} onClose={() => setShareModalOpen(false)} />
       
     
       <div className="md:max-w-7xl max-w-xs  md:px-15 xl:px-0  mx-auto  flex flex-col ">
         <div className="flex justify-between  items-center py-5"> 
           <div>
-            <div className="flex items-center px-5 md:px-0  gap-2">
+            <div className="flex items-center px-5 md:px-0  gap-2 text-lg font-semibold">
             {`Welcome ${username}`}
             <HandWaveIcon />
             </div>
-            <p className="hidden md:block">What's on your mind today</p>
+            <p className="hidden md:block  text-black/70 pt-1">What's on your brain today</p>
           </div>
           <div className="md:flex md:gap-4 hidden">
             <Button text="Add Content" variant="primary" onClick={() => setModalOpen(true)} size="md" startIcon={<AddIcon size="md" />}/>
-            <Button text="Share Brain" variant="secondary" size="md" startIcon={<ShareIcon size="md" />}/>
+            <Button text="Share Brain" variant="secondary" size="md" onClick={() => setShareModalOpen(true)} startIcon={<ShareIcon size="md" />}/>
           </div>
            <div className="flex md:hidden gap-4 ">
              <button onClick={() => setModalOpen(true)} className="bg-blue-600 p-1 rounded-md text-white cursor-pointer ">
               <AddIcon size="md"  />
             </button>
-             <button className="bg-blue-200 p-1 rounded-md text-blue-500 cursor-pointer" >
+             <button onClick={() => setShareModalOpen(true)} className="bg-blue-200 p-1 rounded-md text-blue-500 cursor-pointer" >
               <ShareIcon size="md" />
             </button>
           </div>
         </div>
         <div className="md:max-w-7xl max-w-xs items-center flex flex-wrap justify-center md:justify-start gap-4 md:gap-5 ">
             <Box onClick={() => setCurrentPage(Pages.all)} text="All" />
-            <Box onClick={() => setCurrentPage(Pages.all)} text="Tweets" />
+            <Box onClick={() => setCurrentPage(Pages.twitter)} text="Tweets" />
             <Box onClick={() => setCurrentPage(Pages.youtube)} text="Youtube" />
-            <Box onClick={() => setCurrentPage(Pages.all)} text="Documents" />
+            <Box onClick={() => setCurrentPage(Pages.documents)} text="Documents" />
             <Box onClick={() => setCurrentPage(Pages.instagram)} text="Instagram" />
-            <Box onClick={() => setCurrentPage(Pages.instagram)} text="Facebook" />
+            <Box onClick={() => setCurrentPage(Pages.facebook)} text="Facebook" />
             <Box onClick={() => setCurrentPage(Pages.instagram)} text="Linkedin" />
         </div>
         <div className="min-h-screen my-10">

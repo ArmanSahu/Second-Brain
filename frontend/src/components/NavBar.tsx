@@ -28,7 +28,7 @@ export const NavBar = () => {
     };
     }, [sideBarMainPage]);
 
-    return <div className="bg-white shadow-sm ">
+    return <div className="bg-white z-50 shadow-sm">
         <div className="sm:max-w-7xl max-w-sm px-3  mx-auto sm:px-8 2xl:px-0   py-4 md:py-4 2xl:py-5 flex justify-between">
         
             <div className="lg:text-2xl text-xl tracking-tight font-bold  flex items-center gap-1">
@@ -47,7 +47,7 @@ export const NavBar = () => {
          
             <div className=" md:flex hidden  items-center md:gap-4 lg:gap-10 ">
                 <NavbarLink to="/" text="Home" />
-                <NavbarLink to="/#" text="About" />
+                <NavbarLink to="/about" text="About" />
                  <NavbarLink to="/dashboard"  text="Dashboard" />
             </div>
             

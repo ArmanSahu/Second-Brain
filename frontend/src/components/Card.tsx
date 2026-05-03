@@ -79,7 +79,7 @@ export const Card = ({title,type,link,id}: cardProps) => {
         return () => clearTimeout(timer);
         }, [type, link]);
 
-    return <div className="min-w-xs min-h-60 max-h-80 overflow-y-auto scrollbar-hide p-4 border-gray-200 border outline-slate-200 shadow-gray-200 shadow-xs rounded-md  flex flex-col gap-4 shrink-0 bg-white ">
+    return <div className="min-w-xs min-h-60 max-h-80 overflow-y-auto scrollbar-hide p-4 border-gray-200 border outline-slate-200 shadow-gray-200 shadow-md rounded-md  flex flex-col gap-4 shrink-0 bg-white ">
         <div className="flex justify-between items-center gap-3 font-semibold ">
             <div className="flex items-center gap-3 text-gray-500">
                 {iconType[type]}

@@ -8,6 +8,7 @@ import { useEffect } from "react"
 import { MainComponent } from "./Pages/MainPage"
 import { QueryProvider } from "./Providers/QueryProvider"
 import { Share } from "./Pages/Share"
+import AboutPage from "./Pages/About"
 
 function App() {
   
@@ -25,6 +26,7 @@ function App() {
           <Route path="/" element={<MainComponent />} />
           <Route path="/signup" element={<SignUp/>} />
           <Route path="/login" element={<Login/>} />
+          <Route path="/about" element={<AboutPage />} />
           <Route path="/dashboard" element={
             <Protected>
               <Dashboard />

@@ -25,7 +25,7 @@ export const useShareBrain = (shareId: string) => {
         queryFn : async() => {
             const res = await fetch(`${Backend_URL}${URLPath.getSharedBrain}${shareId}`);
             if(!res.ok){
-                throw new Error ("Failed to fetch shared brain")
+                throw new Error ("Sorry,ABFailed to fetch shared brain")
             }
             return res.json();
         },

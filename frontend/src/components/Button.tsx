@@ -11,8 +11,8 @@ interface ButtonType{
 }
 
 const variantType = {
-    "primary": "bg-blue-600 text-white",
-    "secondary": "bg-blue-200 text-blue-600" 
+    "primary": "bg-blue-600 text-white hover:bg-blue-700",
+    "secondary": "bg-blue-200 text-blue-600 " 
 }
 
 const defaultType = " cursor-pointer flex items-center transition-transform hover:-translate-y-0.5 duration-300 active:translate-y-0.5 "

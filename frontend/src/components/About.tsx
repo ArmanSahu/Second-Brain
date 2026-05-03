@@ -7,8 +7,10 @@ export const About = () => {
     return <div className="min-h-screen bg-white-100  text-gray-800 px-6 py-10">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-10">
-          <h1 className="text-4xl font-bold flex justify-center items-center gap-2">
+          <h1 className="text-4xl font-bold flex justify-center items-center gap-2 ">
+            <div className="hidden sm:block">
             <BrainIcon />
+            </div>
             Your Second Brain
           </h1>
           <p className="mt-3 text-gray-600 text-lg">

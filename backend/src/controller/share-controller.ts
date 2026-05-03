@@ -21,7 +21,7 @@ export const share = async(req: Request, res: Response) => {
                 userId
             });
             if(existingLink){
-                const link = `http://localhost:5173/brain/share/${existingLink.hash}`
+                const link = `https://second-brain-cx11.vercel.app/brain/share/${existingLink.hash}`
                 return res.status(200).json({
                     message: "existing sharable link",
                     link
@@ -33,7 +33,7 @@ export const share = async(req: Request, res: Response) => {
                 userId
             });
             
-            const link = `http://localhost:5173/brain/share/${newLink.hash}`
+            const link = `https://second-brain-cx11.vercel.app/brain/share/${newLink.hash}`
 
             return res.status(201).json({
                 message: "new link created",

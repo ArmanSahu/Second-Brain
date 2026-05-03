@@ -9,7 +9,7 @@ export const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: "https://second-brain-na3d.vercel.app",
+    origin: "https://second-brain-cx11.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type"],
     credentials: true

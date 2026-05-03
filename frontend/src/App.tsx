@@ -5,7 +5,6 @@ import { Dashboard } from "./Pages/Dashboard"
 import { Protected } from "./components/ProtectedRoute"
 import { useAuthStore } from "./store/AuthStore"
 import { useEffect } from "react"
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { MainComponent } from "./Pages/MainPage"
 import { QueryProvider } from "./Providers/QueryProvider"
 

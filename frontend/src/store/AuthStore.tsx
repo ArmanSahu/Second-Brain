@@ -22,8 +22,8 @@ type resultType = {
 
 export const useAuthStore = create<AuthStore>((set) => ({
     username : "",
-    isAuthenticated: true,
-    loading: false,
+    isAuthenticated: false,
+    loading: true,
     setUsername : (value) => set({username: value}),
     setAuth: (value) => set({isAuthenticated: value}),
     fetchAuth : async() => {

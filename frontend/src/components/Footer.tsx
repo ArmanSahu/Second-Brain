@@ -7,8 +7,8 @@ import { CloudIcon } from "../Icons/CloudIcon"
 
 
 export const Footer = () => {
-    return <div className="border-t border-gray-200 shadow-sm py-5 h-full">
-        <div className="max-w-7xl mx-auto flex flex-col gap-10 pb-15    ">
+    return <div className="border-t border-gray-200 shadow-sm py-10 h-full">
+        <div className="max-w-7xl mx-auto flex flex-col gap-10 pb-2 ">
             <div className="flex justify-center items-center">
                 Trusted by students, creators and professionals
             </div>

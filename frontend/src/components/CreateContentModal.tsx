@@ -5,7 +5,7 @@ import { Dropdown } from "./Dropdown";
 import { useForm } from "react-hook-form";
 import { useCreateContent } from "../hooks/useCreateContent";
 import { useQueryClient } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 interface ContentModalType{
@@ -50,10 +50,24 @@ export const ContentModal = ({open,onClose}: ContentModalType) => {
             
         });
     }
+
+    useEffect(() => {
+        if(open){
+            document.body.style.overflow = "hidden";
+            document.body.style.touchAction = "none";
+        }else{
+             document.body.style.overflow = "auto";
+            document.body.style.touchAction = "auto";
+        }
+        return () => {
+             document.body.style.overflow = "auto";
+            document.body.style.touchAction = "auto";
+        }
+    })
     
     return <div>
-        {open && <div onClick={onClose}  className="fixed w-screen h-screen top-0 left-0 bg-slate-500/50 flex justify-center items-center ">
-            <div onClick={(e) => e.stopPropagation()}  className="bg-white px-6 py-10 min-w-sm rounded-xl ">
+        {open && <div onClick={onClose}  className="fixed w-screen h-screen top-0 left-0 bg-gray-200/70 flex justify-center items-center ">
+            <div onClick={(e) => e.stopPropagation()}  className="bg-white px-6 py-10 md:min-w-sm min-w-xs rounded-xl ">
                 <div className="flex items-center justify-between font-semibold text-lg ">
                     <p>Add Content</p>
                     <div onClick={onClose} className="cursor-pointer">

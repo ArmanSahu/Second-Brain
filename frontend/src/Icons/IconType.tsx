@@ -7,6 +7,6 @@ export type iconType = {
 export const iconSize = {
     "sm": "size-3",
     "md": "size-4",
-    "lg": "size-7",
+    "lg": "size-7 ",
 
 }

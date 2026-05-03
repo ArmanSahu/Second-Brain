@@ -85,8 +85,8 @@ export const Auth = ({type,header,subheading}:AuthType) => {
         }
     }
 
-    return <div className="screen flex justify-center h-screen bg-blue-100/70">
-        <div className="flex flex-col items-center justify-center ">
+    return <div className="max-w-screen flex justify-center  h-screen bg-gray-100/70">
+        <div className="flex flex-col items-center justify-start pt-20 ">
             <div className="flex flex-col items-center justify-center">
                 <BrainIcon />
                 <p className="font-bold mt-3 text-2xl">Second Brain</p>

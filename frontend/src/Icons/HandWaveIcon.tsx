@@ -1,9 +1,9 @@
-import { iconSize, type iconType } from "./IconType";
 
 
-export const HandWaveIcon = ({size}: iconType) => {
+
+export const HandWaveIcon = () => {
     return <div>
-        <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" id="Waving-Hand--Streamline-Plump" className={`${iconSize[size]} fill-yellow-300 `}>
+        <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" id="Waving-Hand--Streamline-Plump" className={`md:size-7 size-6 fill-yellow-300 `}>
             <desc>
                 Waving Hand Streamline Icon: https://streamlinehq.com
             </desc>

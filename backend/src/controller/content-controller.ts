@@ -9,6 +9,7 @@ export const createContent = async(req: Request, res: Response) => {
             message: "Unauthorized" 
         });
     }
+   
     const userId = req.user.userId;
     const {title,link,type,tag} = req.body
     

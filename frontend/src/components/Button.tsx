@@ -1,7 +1,7 @@
 import type { ReactElement } from "react"
 
 interface ButtonType{
-    text: string,
+    text?: string,
     variant: "primary" | "secondary",
     size: "sm" | "md" | "lg" | "custom",
     startIcon?: ReactElement,
@@ -19,10 +19,10 @@ const defaultType = " cursor-pointer flex items-center transition-transform hove
 const loadingType = "flex items-center"
 
 const sizeType = {
-    "sm": "px-4 py-1 gap-1 md:rounded-md rounded-xl",
-    "md": "px-5 py-1.5 gap-2 rounded-md",
-    "lg": "lg:px-7 lg:py-1.5 px-6 py-1 gap-3 rounded-md ",
-    "custom": "w-full flex justify-center items-center py-1.5 rounded-md"
+    "sm": "px-4 py-1.5 gap-1 md:rounded-md rounded-3xl",
+    "md": "md:px-6 md:py-1.5  gap-2 rounded-md",
+    "lg": "lg:px-7 px-6 py-3 gap-3 rounded-md ",
+    "custom": "w-full flex justify-center items-center py-2 rounded-md"
 }
 
 export const Button = ({variant,text,startIcon,endIcon,size,onClick,loading}: ButtonType) => {

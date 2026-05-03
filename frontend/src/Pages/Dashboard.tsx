@@ -11,6 +11,10 @@ import { Card } from "../components/Card"
 import { CardSkeleton } from "../components/CardSkeleton"
 import ErrorBoundary from "../components/ErrorBoundry";
 import { Box } from "../components/DashboardContentBox"
+import { SidebarIcon } from "../Icons/SidebarIcons"
+import { ShareModal } from "../components/ShareContentModal"
+
+
 
 
 
@@ -24,69 +28,79 @@ export function Dashboard() {
 
   const [modalOpen,setModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(Pages.all);
+  const [sidebarOpen,setSidebarOpen] = useState(false);
+  const [share, setShareModalOpen] = useState(false);
 
   const username = useAuthStore((s) => s.username);
   const {data,isLoading,error} = useContent();
   const filteredContent = currentPage === Pages.all ? data?.contents : data?.contents.filter((c) => c.type === currentPage); 
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="bg-gray-100">
 
-      {/* Sidebar */}
-      <div>
-        <SideBar setCurrPage={setCurrentPage} />
-      </div>
-
+      
+      <SideBar setCurrPage={setCurrentPage} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+      
 
       {/* ContentModal open close */}
-      <ContentModal open={modalOpen} onClose={() => setModalOpen(false)}/>
-    
-      <div className="max-w-7xl mx-auto pt-4 flex flex-col ">  
-
-        <div className="flex justify-between items-center gap-4">
-            <div className="pl-62">
-                <div className="flex items-center gap-2">
-                <p className="text-xl font-bold">{`Welcome ${username}`}</p>
-                <HandWaveIcon size="lg" />
-                </div>
-                <p className="text-sm">Here's what's in your brain today</p>
-            </div>
-
-            <div className="flex gap-5">
-                <Button text="Add Content" variant="primary" size="md" startIcon={<AddIcon size="md" />} onClick={() => setModalOpen(true)} />
-                <Button text="Share Brain" variant="secondary" size="md" startIcon={<ShareIcon size="md" />} />
-            </div>
-        </div>  
-        
+      <div onClick={()=>setSidebarOpen((p) => !p)} className="fixed left-3 cursor-pointer top-6 z-50">
+        <SidebarIcon size="lg" />
       </div>
-
-      <div className="  ml-70 px-20 py-5 flex gap-3 ">
+      
+      <ContentModal open={modalOpen} onClose={() => setModalOpen(false)}/>
+      <ShareModal open={true} />
+      
+    
+      <div className="md:max-w-7xl max-w-xs  md:px-15 xl:px-0  mx-auto  flex flex-col ">
+        <div className="flex justify-between  items-center py-5"> 
+          <div>
+            <div className="flex items-center px-5 md:px-0  gap-2">
+            {`Welcome ${username}`}
+            <HandWaveIcon />
+            </div>
+            <p className="hidden md:block">What's on your mind today</p>
+          </div>
+          <div className="md:flex md:gap-4 hidden">
+            <Button text="Add Content" variant="primary" onClick={() => setModalOpen(true)} size="md" startIcon={<AddIcon size="md" />}/>
+            <Button text="Share Brain" variant="secondary" size="md" startIcon={<ShareIcon size="md" />}/>
+          </div>
+           <div className="flex md:hidden gap-4 ">
+             <button onClick={() => setModalOpen(true)} className="bg-blue-600 p-1 rounded-md text-white cursor-pointer ">
+              <AddIcon size="md"  />
+            </button>
+             <button className="bg-blue-200 p-1 rounded-md text-blue-500 cursor-pointer" >
+              <ShareIcon size="md" />
+            </button>
+          </div>
+        </div>
+        <div className="md:max-w-7xl max-w-xs items-center flex flex-wrap justify-center md:justify-start gap-4 md:gap-5 ">
             <Box onClick={() => setCurrentPage(Pages.all)} text="All" />
             <Box onClick={() => setCurrentPage(Pages.all)} text="Tweets" />
-            <Box onClick={() => setCurrentPage(Pages.youtube)} text="Videos" />
+            <Box onClick={() => setCurrentPage(Pages.youtube)} text="Youtube" />
             <Box onClick={() => setCurrentPage(Pages.all)} text="Documents" />
             <Box onClick={() => setCurrentPage(Pages.instagram)} text="Instagram" />
-      </div>
+            <Box onClick={() => setCurrentPage(Pages.instagram)} text="Facebook" />
+            <Box onClick={() => setCurrentPage(Pages.instagram)} text="Linkedin" />
+        </div>
+        <div className="min-h-screen my-10">
 
-      <div className="  ml-70 px-20 pt-4 pb-10">
-        {isLoading && <div className="loader flex justify-center items-center"></div>}
+          {error && <div className="text-red-500">
+            Something went wrong while fetching contents
+          </div>}
 
-        {error && <div className="text-red-500">
-          Something went wrong while fetching contents
-        </div>}
-
-        <div className="flex gap-10 flex-wrap">
-            {isLoading 
-              ? Array.from({ length: 6 }).map((_, i) => (
-                  <CardSkeleton key={i} />
-                ))
-              : filteredContent?.map((c) => (
-                  <ErrorBoundary key={c._id}>
-                  <Card id={c._id}  title={c.title} link={c.link} type={c.type} />
-                  </ErrorBoundary>
-                ))}
+          <div className="flex flex-col justify-center md:justify-start md:flex-row  gap-10 flex-wrap">
+              {isLoading 
+                ? Array.from({ length: 6 }).map((_, i) => (
+                    <CardSkeleton key={i} />
+                  ))
+                : filteredContent?.map((c) => (
+                    <ErrorBoundary key={c._id}>
+                    <Card id={c._id}  title={c.title} link={c.link} type={c.type} />
+                    </ErrorBoundary>
+                  ))}
+            </div>
           </div>
-      </div>
+        </div>
     </div>
     
   )

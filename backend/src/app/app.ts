@@ -7,12 +7,18 @@ import shareRouter from '../routes/share-routes.js';
 import MeRouter from '../routes/me-routes.js'
 export const app = express();
 
-//Middlewares
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: '*',
-    credentials: true
+  origin: "https://second-brain-na3d.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type"],
+  credentials: true
+}));
+app.options("*", cors({
+  origin: "https://second-brain-na3d.vercel.app",
+  credentials: true
 }));
 
 

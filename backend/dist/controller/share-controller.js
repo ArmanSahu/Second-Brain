@@ -15,7 +15,7 @@ export const share = async (req, res) => {
                 userId
             });
             if (existingLink) {
-                const link = `http://localhost:3000/api/v1/brain/share/${existingLink.hash}`;
+                const link = `http://localhost:5173/brain/share/${existingLink.hash}`;
                 return res.status(200).json({
                     message: "existing sharable link",
                     link
@@ -26,7 +26,7 @@ export const share = async (req, res) => {
                 hash,
                 userId
             });
-            const link = `http://localhost:3000/api/v1/brain/share/${newLink.hash}`;
+            const link = `http://localhost:5173/brain/share/${newLink.hash}`;
             return res.status(201).json({
                 message: "new link created",
                 link
@@ -42,7 +42,8 @@ export const share = async (req, res) => {
                 });
             }
             return res.status(200).json({
-                message: "deleted sharable link"
+                message: "deleted sharable link",
+                link: null
             });
         }
     }
@@ -63,18 +64,21 @@ export const getContent = async (req, res) => {
     try {
         const linkData = await LinkModel.findOne({
             hash: contentLink
-        });
+        }).populate("userId", "username");
         if (!linkData) {
             return res.status(404).json({
                 message: "invalid link"
             });
         }
-        const content = await Content.find({
-            userId: linkData.userId
-        }).populate("userId", "username").lean();
+        const contents = await Content.find({
+            userId: linkData.userId._id
+        }).sort({
+            createdAt: -1
+        }).lean();
         return res.status(200).json({
             message: "successful",
-            content
+            contents,
+            username: linkData.userId.username
         });
     }
     catch (error) {

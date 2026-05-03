@@ -6,6 +6,6 @@ const router = express.Router();
 
 
 router.post('/share',validateToken,share);
-router.get('/share/:shareId',validateToken,getContent);
+router.get('/share/:shareId',getContent);
 
 export default router;

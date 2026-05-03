@@ -56,7 +56,6 @@ export const login = async(req: Request, res: Response) => {
         }
 
         const token = generateToken(existingUser);
-        console.log(token);
         res.cookie("token",token,{
             httpOnly: true,
             maxAge: 7*24*60*60*1000,

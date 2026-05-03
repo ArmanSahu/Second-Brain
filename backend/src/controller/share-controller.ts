@@ -2,6 +2,7 @@ import type { Request, Response } from "express";
 import crypto from 'node:crypto';
 import { LinkModel } from "../models/Link-model.js";
 import { Content } from "../models/content-model.js";
+import type mongoose from "mongoose";
 
 
 export const share = async(req: Request, res: Response) => {
@@ -20,7 +21,7 @@ export const share = async(req: Request, res: Response) => {
                 userId
             });
             if(existingLink){
-                const link = `http://localhost:3000/api/v1/brain/share/${existingLink.hash}`
+                const link = `http://localhost:5173/brain/share/${existingLink.hash}`
                 return res.status(200).json({
                     message: "existing sharable link",
                     link
@@ -32,7 +33,7 @@ export const share = async(req: Request, res: Response) => {
                 userId
             });
             
-            const link = `http://localhost:3000/api/v1/brain/share/${newLink.hash}`
+            const link = `http://localhost:5173/brain/share/${newLink.hash}`
 
             return res.status(201).json({
                 message: "new link created",
@@ -48,7 +49,8 @@ export const share = async(req: Request, res: Response) => {
                 });
             }
             return res.status(200).json({
-                message: "deleted sharable link"
+                message: "deleted sharable link",
+                link: null
             });
         }
    }catch(error){
@@ -59,8 +61,15 @@ export const share = async(req: Request, res: Response) => {
    }
 }
 
+
+
+
 export const getContent = async(req: Request, res: Response) => {
     const contentLink = req.params.shareId;
+    type PopulatedUser = {
+        _id: mongoose.Types.ObjectId;
+        username: string;
+    };
     if(!contentLink){
         return res.status(400).json({
             message: "Invalid request"
@@ -69,19 +78,23 @@ export const getContent = async(req: Request, res: Response) => {
     try{
         const linkData = await LinkModel.findOne({
             hash: contentLink
-        });
+        }).populate<{ userId: PopulatedUser }>("userId","username");
+
         if(!linkData){
             return res.status(404).json({
                 message: "invalid link"
             })
         }
-        const content = await Content.find({
-            userId: linkData.userId
-        }).populate("userId","username").lean();
+        const contents = await Content.find({
+            userId: linkData.userId._id
+        }).sort({
+            createdAt: -1
+        }).lean();
 
         return res.status(200).json({
             message: "successful",
-            content
+            contents,
+            username: linkData.userId.username
         });
     }catch(error){
         return res.status(500).json({

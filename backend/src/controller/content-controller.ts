@@ -53,7 +53,8 @@ export const getContent = async(req: Request, res: Response) => {
             userId
         }).sort({
             createdAt: -1
-        });
+        })
+
         return res.status(200).json({
             message: "successful",
             contents

@@ -84,7 +84,7 @@ export function Dashboard() {
             <Box onClick={() => setCurrentPage(Pages.documents)} text="Documents" />
             <Box onClick={() => setCurrentPage(Pages.instagram)} text="Instagram" />
             <Box onClick={() => setCurrentPage(Pages.facebook)} text="Facebook" />
-            <Box onClick={() => setCurrentPage(Pages.instagram)} text="Linkedin" />
+            <Box onClick={() => setCurrentPage(Pages.linkedin)} text="Linkedin" />
         </div>
         <div className="min-h-screen my-10">
 

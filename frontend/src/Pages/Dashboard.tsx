@@ -56,9 +56,9 @@ export function Dashboard() {
       
     
       <div className="md:max-w-7xl max-w-xs  md:px-15 xl:px-0  mx-auto  flex flex-col ">
-        <div className="flex md:justify-between justify-center gap-7 md:gap-0  items-center py-5"> 
+        <div className="flex justify-between items-center py-5"> 
           <div>
-            <div className="flex items-center px-5 md:px-0  gap-2 text-2xl font-semibold">
+            <div className="flex items-center px-5 md:px-0  gap-2 md:text-2xl text-lg font-semibold">
             {`Welcome, ${username}`}
             <HandWaveIcon />
             </div>
